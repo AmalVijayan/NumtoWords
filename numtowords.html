@@ -1,0 +1,39 @@
+<html>
+   <head>
+      <script type="text/javascript">
+         <!--
+            var a = ['','one ','two ','three ','four ', 'five ','six ','seven ','eight ','nine ','ten ','eleven ','twelve ','thirteen ','fourteen ','fifteen ','sixteen ','seventeen ','eighteen ','nineteen '];
+var b = ['', '', 'twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety'];
+
+function inWords (num) {
+    if(!num) return;
+    if ((num = num.toString()).length > 4) return 'overflow';
+    n = ('0000' + num).substr(-4).match(/^(\d{1})(\d{1})(\d{2})$/);
+    if (!n) return; 
+    var str = '';
+    if (num == 0) str = 'zero';
+    str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'thousand ' : '';
+    str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'hundred ' : '';
+    str += (n[3] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]])  : '';
+    textbox2.value=str;
+
+}
+      </script>
+   </head>
+   
+<body style="background-color:powderblue;">     
+     <div>
+  <h1 style="color:blue">Number to Word Converter</h1>  
+
+   <input type="text" name="textbox1" id="textbox1" size=20px />
+</div>
+            
+  
+      <input type="button" onclick="inWords(document.getElementById('textbox1').value)" value="Convert to Words" />
+  <div>    
+      <h2 style="color:blue">Result</h2>
+      <input type="text" name="textbox2" id="textbox2" readonly="true" size=50px />      
+ 
+
+   </body>
+</html>
