@@ -43,32 +43,52 @@ public class Numtowords {
   }
 
 
-  public static void main(String[] args) {
-    Scanner in = new Scanner(System.in);
+  public static String convert(long number) {
+ 
+    if (number == 0) { return "zero"; }
 
-    System.out.println("Enter a Number between 1 and 1000\n ");
-    int num = in.nextInt();
-
-    if (num == 0) { System.out.println("\n zero"); }
-
-    String snumber = Long.toString(num);
+    String snumber = Long.toString(number);
 
     // zero padding 
     String zero_padded = "0000";
     DecimalFormat df = new DecimalFormat(zero_padded);
-    snumber = df.format(num);
+    snumber = df.format(number);
     
-    //System.out.println("\nAfter Padding :" + snumber); 
+
+   //System.out.println("\nAfter Padding :" + snumber); 
 
     int limit = Integer.parseInt(snumber.substring(0,4));
 
     String output;
     output = _convertHundreds(limit) ;
+    //String result = tradThousand ;
+
+    // remove extra spaces!
+    return output.replaceAll("^\\s+", "").replaceAll("\\b\\s{2,}\\b", " ");
+  }
 
 
-    System.out.println("\nOutput :" + output.replaceAll("^\\s+", "").replaceAll("\\b\\s{2,}\\b", " "));
 
 
+
+  public static void main(String[] args) {
+    Scanner in = new Scanner(System.in);
+
+    System.out.println("Enter a Number between 1 and 1000");
+    int num = in.nextInt();
+    System.out.println("\nOutput : " + Numtowords.convert(num));
+
+    System.out.println("\n 1 :"+Numtowords.convert(1));
+    System.out.println("\n 16 :"+Numtowords.convert(16));
+    System.out.println("\n 100 :"+Numtowords.convert(100));
+    System.out.println("\n 118 :"+Numtowords.convert(118));
+    System.out.println("\n 200 :"+Numtowords.convert(200));
+    System.out.println("\n 219 :"+Numtowords.convert(219));
+    System.out.println("\n 800 :"+Numtowords.convert(800));
+    System.out.println("\n 801 :"+Numtowords.convert(801));
+    System.out.println("\n 999 :"+Numtowords.convert(999));
+    System.out.println("\n 1316 :"+Numtowords.convert(1316));
+    System.out.println("\n 1000 :"+Numtowords.convert(1000));
   }
 }
 
